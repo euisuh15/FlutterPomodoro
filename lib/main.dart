@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Pomodoro',
       theme: ThemeData(
         backgroundColor: const Color(0xFFE7626C),
+        dividerColor: const Color(0xFFF4EDDB),
+        disabledColor: const Color(0xFF232B55),
         textTheme: const TextTheme(
           headline1: TextStyle(
             color: Color(0xFF232B55),
