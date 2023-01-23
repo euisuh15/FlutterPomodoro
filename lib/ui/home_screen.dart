@@ -10,27 +10,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  static const twenty_five_min = 1500;
-  int curr_seconds = twenty_five_min, curr_pomodoro = 0;
+  static const twentyFiveMin = 1500;
+  int currSeconds = twentyFiveMin, currPomodoro = 0;
   bool isActive = false;
   late Timer timer;
 
   void onTick(Timer timer) {
-    if (curr_seconds == 0) {
+    if (currSeconds == 0) {
       setState(() {
         isActive = false;
-        curr_pomodoro += 1;
-        curr_seconds = twenty_five_min;
+        currPomodoro += 1;
+        currSeconds = twentyFiveMin;
       });
       timer.cancel();
     } else {
       setState(() {
-        curr_seconds -= 1;
+        currSeconds -= 1;
       });
     }
   }
 
-  String format_seconds(int seconds) {
+  String formatSeconds(int seconds) {
     var duration = Duration(seconds: seconds);
     return duration.toString().split(".").first.substring(2, 7);
   }
@@ -52,11 +52,20 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onStopPressed() {
+    timer.cancel();
+    setState(() {
+      isActive = false;
+      currPomodoro = 0;
+      currSeconds = twentyFiveMin;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: isActive
-          ? Theme.of(context).backgroundColor
+          ? Theme.of(context).primaryColor
           : Theme.of(context).disabledColor,
       body: Column(
         children: [
@@ -65,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                format_seconds(curr_seconds),
+                formatSeconds(currSeconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 80,
@@ -74,16 +83,37 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 100,
+            child: LinearProgressIndicator(
+              value: currSeconds / twentyFiveMin,
+              backgroundColor: Theme.of(context).backgroundColor,
+              color: isActive
+                  ? Theme.of(context).disabledColor
+                  : Theme.of(context).primaryColor,
+            ),
+          ),
           Flexible(
             flex: 3,
             child: Center(
-              child: IconButton(
-                iconSize: 120,
-                color: Theme.of(context).cardColor,
-                onPressed: isActive ? onPausePressed : onStartPressed,
-                icon: Icon(isActive
-                    ? Icons.pause_circle_outlined
-                    : Icons.play_circle_outline),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor,
+                    onPressed: isActive ? onPausePressed : onStartPressed,
+                    icon: Icon(isActive
+                        ? Icons.pause_circle_outlined
+                        : Icons.play_circle_outline),
+                  ),
+                  IconButton(
+                    iconSize: 120,
+                    color: Theme.of(context).cardColor,
+                    onPressed: onStopPressed,
+                    icon: const Icon(Icons.stop_circle_outlined),
+                  ),
+                ],
               ),
             ),
           ),
@@ -111,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         Text(
-                          '$curr_pomodoro',
+                          '$currPomodoro',
                           style: TextStyle(
                             fontSize: 58,
                             fontWeight: FontWeight.w600,

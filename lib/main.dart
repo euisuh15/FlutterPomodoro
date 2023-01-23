@@ -11,11 +11,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Design from referenced from https://www.behance.net/gallery/98918603/POMO-UIKIT
     return MaterialApp(
       title: 'Pomodoro',
       theme: ThemeData(
-        backgroundColor: const Color(0xFFE7626C),
+        primaryColor: const Color(0xFFE7626C),
         dividerColor: const Color(0xFFF4EDDB),
+        backgroundColor: const Color(0xFFFFFFFE),
         disabledColor: const Color(0xFF232B55),
         textTheme: const TextTheme(
           headline1: TextStyle(
