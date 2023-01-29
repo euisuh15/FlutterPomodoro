@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:pomodoro/ui/widgets/ProgressFraction.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String formatSeconds(int seconds) {
     var duration = Duration(seconds: seconds);
-    return duration.toString().split(".").first.substring(2, 7);
+    return duration.toString().substring(2, 7);
   }
 
   void onStartPressed() {
@@ -72,19 +73,26 @@ class _HomeScreenState extends State<HomeScreen> {
           Flexible(
             flex: 1,
             child: Container(
+              padding: const EdgeInsets.only(
+                top: 80,
+              ),
               alignment: Alignment.bottomCenter,
               child: Text(
                 formatSeconds(currSeconds),
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
-                  fontSize: 80,
+                  fontSize: 75,
                   fontWeight: FontWeight.w800,
                 ),
               ),
             ),
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width - 100,
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 50,
+              vertical: 25,
+            ),
+            width: MediaQuery.of(context).size.width,
             child: LinearProgressIndicator(
               value: currSeconds / twentyFiveMin,
               backgroundColor: Theme.of(context).backgroundColor,
@@ -129,26 +137,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           topRight: Radius.circular(50),
                           topLeft: Radius.circular(50)),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Pomodoros',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).textTheme.headline1!.color,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ProgressFraction(
+                            title: 'ROUND',
+                            numer: currPomodoro,
+                            denom: 4,
                           ),
-                        ),
-                        Text(
-                          '$currPomodoro',
-                          style: TextStyle(
-                            fontSize: 58,
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).textTheme.headline1!.color,
+                          VerticalDivider(
+                            width: 10,
+                            thickness: 2,
+                            indent: 20,
+                            endIndent: 20,
+                            color: Theme.of(context).disabledColor,
                           ),
-                        ),
-                      ],
+                          ProgressFraction(
+                            title: 'GOAL',
+                            numer: currPomodoro,
+                            denom: 4,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
