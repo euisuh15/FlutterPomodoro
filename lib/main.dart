@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/ui/page/home_screen.dart';
+import 'package:pomodoro/ui/page/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+/// The route configuration.
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeScreen();
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'onboarding',
+          builder: (BuildContext context, GoRouterState state) {
+            return const OnBoardingScreen();
+          },
+        ),
+      ],
+    ),
+  ],
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,8 +34,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // Design from referenced from https://www.behance.net/gallery/98918603/POMO-UIKIT
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Pomodoro',
       theme: ThemeData(
         textTheme: GoogleFonts.montserratTextTheme(
@@ -25,7 +46,7 @@ class MyApp extends StatelessWidget {
         disabledColor: const Color(0xFF232B55),
         cardColor: const Color(0xFFF4EDDB),
       ),
-      home: const HomeScreen(),
+      routerConfig: _router,
     );
   }
 }

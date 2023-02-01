@@ -39,9 +39,9 @@ class ProgressFraction extends StatelessWidget {
             ),
           ),
           Transform.translate(
-            offset: const Offset(25, -20),
+            offset: const Offset(30, -20),
             child: Text(
-              '/ $denom',
+              '/  $denom',
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
