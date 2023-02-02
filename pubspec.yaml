@@ -41,6 +41,25 @@ dependencies:
   animated_text_kit: ^4.2.2
   go_router: ^6.0.2
   introduction_screen: ^3.1.4
+  flutter_launcher_icons: ^0.11.0
+  
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/appicon_pomodoro.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/appicon_pomodoro.png"
+    background_color: "#F4EDDB"
+    theme_color: "#232B55"
+  windows:
+    generate: true
+    image_path: "assets/appicon_pomodoro.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/appicon_pomodoro.png"
 
 dev_dependencies:
   flutter_test:
