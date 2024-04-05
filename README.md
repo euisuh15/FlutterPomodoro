@@ -1,6 +1,6 @@
-# POMODORO
+# Flutter Pomodoro Timer
 
-A Pomodoro Timer app built with Flutter to help users increase productivity by breaking work into focused intervals, with breaks in between.
+The Flutter Pomodoro Timer repository is a project crafted with the goal of both learning and mastering Flutter development through practical application. The Pomodoro technique, renowned for its effectiveness in time management, serves as the foundation for this project. With this repository, I've delved into the intricacies of Flutter, honing my skills in UI design, state management, and asynchronous programming.
 
 ## Features
 
@@ -24,7 +24,3 @@ A Pomodoro Timer app built with Flutter to help users increase productivity by b
 ## Contributing
 
 If you would like to contribute to the project, please feel free to create a pull request. Contributions are welcome and greatly appreciated.
-
-## License
-
-The POMODORO project is licensed under the [MIT License](LICENSE).
