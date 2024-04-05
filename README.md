@@ -9,10 +9,6 @@ A Pomodoro Timer app built with Flutter to help users increase productivity by b
 - Easy-to-use and intuitive interface
 - Option to choose a background color for a personalized experience
 
-## Screenshots
-
-<img src="screenshot1.png" width="200"> <img src="screenshot2.png" width="200">
-
 ## Getting started
 
 - Clone or download the repository
