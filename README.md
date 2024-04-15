@@ -2,6 +2,8 @@
 
 The Flutter Pomodoro Timer repository is a project crafted with the goal of both learning and mastering Flutter development through practical application. The Pomodoro technique, renowned for its effectiveness in time management, serves as the foundation for this project. With this repository, I've delved into the intricacies of Flutter, honing my skills in UI design, state management, and asynchronous programming.
 
+![cover](cover.jpg)
+
 ## Features
 
 - Customizable timer settings for Pomodoro and Break intervals
